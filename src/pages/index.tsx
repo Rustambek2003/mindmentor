@@ -9,9 +9,19 @@ import { TiMessageTyping } from 'react-icons/ti';
 import { RxHamburgerMenu } from 'react-icons/rx';
 import Adabtivka from "@/widgets/adabtiv/Adabtivka";
 import Modal from "@/widgets/modal/modal";
+import Modall from "@/widgets/modal/modal";
 
 export default function Home() {
   const [open, setOpen] = useState(false)
+  const [Modal,setModal]=useState(false)
+ 
+
+  const openModal=()=>{
+    setModal(true)
+  }
+  const closeModal=()=>{
+    setModal(false)
+  }
   const clickOpen = () => {
     setOpen(true)
   }
@@ -65,7 +75,7 @@ export default function Home() {
           <Adabtivka onClose={clickClose} />
         </div>
         : null}
-      {/*     
+          
       <div className={styles.block_second}>
       <div className={styles.block_card}>
         <div className={styles.card_text}>
@@ -79,8 +89,8 @@ export default function Home() {
         </div>
         <div></div>
       </div>
-    </div> */}
-      {/* <div className={styles.block_big_card}>
+    </div>
+    <div className={styles.block_big_card}>
       <div>
         <h2>Занимайся с IT-специалистами в любое время суток</h2>
       </div>
@@ -167,8 +177,11 @@ export default function Home() {
           </div>
         </div>
       </div>
+      <div>
+        <button>Еще 12 программ</button>
+      </div>
     </div>
-    <div className={styles.block_big_card}>
+    {/* <div className={styles.block_big_card}>
    
       <div className={styles.in_card}>
         <div className={styles.in_card_text}>
@@ -256,16 +269,23 @@ export default function Home() {
       <div>
         <button>Еще 12 программ</button>
       </div>
-    </div>  */}
+    </div>  */} 
       <div className={styles.block_card_modalka}>
         <div className={styles.modal_cart}>
           <h1>30 бесплатных минут!</h1>
           <p>Получи полчаса бесплатных минут, чтобы познакомиться
             с наставником и обсудить график и план занятий.</p>
-          <button><h3>Записаться к ментору</h3></button>
+          <button onClick={openModal}><h3>Записаться к ментору</h3></button>
         </div>
-        <Modal/>
       </div>
+      <div>
+       {Modal ? 
+        
+         <Modall onCloseModal={closeModal}/>
+
+       : null }
+      </div>
+      
       
     </>
   )
